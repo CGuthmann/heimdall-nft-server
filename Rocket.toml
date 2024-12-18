@@ -1,0 +1,17 @@
+[debug]
+address = "0.0.0.0"
+port = 9571
+keep_alive = 5
+log_level = "debug"
+limits = { forms = 32768 }
+
+
+[release]
+address = "0.0.0.0"
+port = 9571
+keep_alive = 5
+read_timeout = 5
+write_timeout = 5
+log = "critical"
+limits = { forms = 32768 }
+secret_key = "8e2836002802f13a079aefd921b052b85e5360ad60bb0289004eb62b007a3fde"
