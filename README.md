@@ -1,6 +1,9 @@
 # heimdall-nft-server
 
-## locale setup
+# config
+- the ledger url is set in main: `LEDGER_URL`, default is `http://localhost:8000` 
+
+## local setup
 
 1. start the ssh-agent with `eval "$(ssh-agent -s)"`
 2. add your key to the agent with `ssh-add PATH-TO-PRIVATE_KEY`
