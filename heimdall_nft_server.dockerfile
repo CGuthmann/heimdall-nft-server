@@ -18,7 +18,7 @@ RUN echo "[net]\ngit-fetch-with-cli = true" >> /usr/local/cargo/config.toml
 RUN echo "$(ssh-keyscan -t rsa gitlab.cc-asp.fraunhofer.de)" >> /root/.ssh/known_hosts
 RUN echo "Host *\nAddKeysToAgent yes\nStrictHostKeyChecking no\nIdentityFile /root/.ssh/id_docker" >> /root/.ssh/config
 #
-RUN eval "$(ssh-agent -s)" && ssh-add .ssh/id_docker
+RUN eval "$(ssh-agent -s)" && ssh-add /root/.ssh/id_docker
 ##
 RUN cargo update
 

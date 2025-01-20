@@ -5,8 +5,6 @@ services:
     restart: "no"
     build:
       context: .
-      ssh: 
-        - heimdall_nft_server_ssh=/home/kali/Projects/heimdall-nft-server/.ssh/id_docker
       dockerfile: ./heimdall_nft_server.dockerfile
       
     ports:
