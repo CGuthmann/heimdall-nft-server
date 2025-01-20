@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  heimdall-nft-server:
+    restart: "no"
+    build:
+      context: .
+      ssh: 
+        - heimdall_nft_server_ssh=/home/kali/Projects/heimdall-nft-server/.ssh/id_docker
+      dockerfile: ./heimdall_nft_server.dockerfile
+      
+    ports:
+      - "9797:9797"
+
+    command: cargo run --release
+    environment:
+        - HEIMDALL_RS_LIBS=/usr/lib/gcc/x86_64-linux-gnu/12/
+          
+    
