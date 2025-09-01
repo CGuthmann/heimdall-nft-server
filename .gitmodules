@@ -1,4 +1,4 @@
 [submodule "sfnft-libs"]
 	path = sfnft-libs
 	url = git@gitlab.cc-asp.fraunhofer.de:blockchainlab/sfnft-libs.git
-	branch = dev
+	branch = feature/nft_child

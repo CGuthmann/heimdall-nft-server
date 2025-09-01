@@ -5,12 +5,12 @@ edition = "2021"
 
 [dependencies]
 rocket = {version = "0.5.1", features = ["secrets", "tls", "json"] }
-heimdall-nft ={ git="ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/heimdall-nft.git", branch = "dev" }
+heimdall-nft ={ git="ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/heimdall-nft.git", branch = "feature/child_nft" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.9"
 num-bigint = { version = "0.4",features = ["serde", "rand"]}
 num-traits = {version = "0.2.11"}
 heimdall = {git = "https://github.com/CGuthmann/heimdall-rs.git", branch = "feature/rapid_witnesscalc"}
 crypto = {git = "https://github.com/CGuthmann/heimdall-rs.git", branch = "feature/rapid_witnesscalc"}
-ledger_authority = {git = "ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/sfnfts.git", branch = "feature/rapid_witnesscalc"}
-nft = {git = "ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/sfnfts.git", branch = "feature/rapid_witnesscalc"}
+ledger_authority = {git = "ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/sfnfts.git", branch = "feature/child_nft"}
+nft = {git = "ssh://git@gitlab.cc-asp.fraunhofer.de/blockchainlab/sfnfts.git", branch = "feature/child_nft"}

@@ -38,4 +38,19 @@ pub mod heimdall_nft_server_structs{
         pub nft: NFTCredential<PoseidonHasher, PoseidonSignature>,
         pub private_key: BigInt
     }
+
+    #[derive(Serialize, Deserialize)]
+    pub struct AttachParams{
+        pub nft: NFTCredential<PoseidonHasher, PoseidonSignature>,
+        pub private_key: BigInt,
+        pub target: NFTCredential<PoseidonHasher, PoseidonSignature>
+    }
+
+    #[derive(Serialize, Deserialize)]
+    pub struct DetachParams{
+        pub nft: NFTCredential<PoseidonHasher, PoseidonSignature>,
+        pub private_key: BigInt,
+        pub target: BigInt,
+        pub path_nft_credential: Vec<NFTCredential<PoseidonHasher, PoseidonSignature>>
+    }
 }

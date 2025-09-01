@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 
 use heimdall_nft_server::heimdall_nft_server_structs::*;
 
-const LEDGER_URL: &str = "http://localhost:8000";
+const LEDGER_URL: &str = "http://192.168.220.137:8000/";
 #[get("/")]
 fn index() -> &'static str {
     "Hello, world!"
@@ -71,6 +71,36 @@ fn burn(data: Json<BurnParams>) -> Result<Json<NFTCredential<PoseidonHasher, Pos
     let mut ledger_authority = RemoteLedgerAuthority::new(LEDGER_URL.to_owned());
 
     let nft_wrap = data.nft.burn(&data.private_key, &mut ledger_authority);
+
+    match nft_wrap {
+    Ok(_) => Ok(Json(data.nft)),
+    Err(_) => Err(Status::InternalServerError),
+    }
+
+}
+
+#[post("/attach", data = "<data>", format = "json")]
+fn attach(data: Json<AttachParams>) -> Result<Json<NFTCredential<PoseidonHasher, PoseidonSignature>>,Status> {
+    let mut data = data.0;
+
+    let mut ledger_authority = RemoteLedgerAuthority::new(LEDGER_URL.to_owned());
+
+    let nft_wrap = data.nft.attach(&data.private_key,&data.target, &mut ledger_authority);
+
+    match nft_wrap {
+    Ok(_) => Ok(Json(data.nft)),
+    Err(_) => Err(Status::InternalServerError),
+    }
+
+}
+#[post("/detach", data = "<data>", format = "json")]
+fn detach(data: Json<DetachParams>) -> Result<Json<NFTCredential<PoseidonHasher, PoseidonSignature>>,Status> {
+    let mut data = data.0;
+
+    let mut ledger_authority = RemoteLedgerAuthority::new(LEDGER_URL.to_owned());
+
+    let nft_wrap = data.nft.detach(&data.private_key,
+         &data.target,data.path_nft_credential.iter().collect(), &mut ledger_authority);
 
     match nft_wrap {
     Ok(_) => Ok(Json(data.nft)),
