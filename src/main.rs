@@ -117,7 +117,9 @@ fn rocket() -> _ {
         index,
         new,
         transfer_split,
-        burn
+        burn,
+        attach,
+        detach
         ])
 }
 
