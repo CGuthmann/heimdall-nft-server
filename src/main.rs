@@ -88,7 +88,7 @@ fn attach(data: Json<AttachParams>) -> Result<Json<NFTCredential<PoseidonHasher,
     let nft_wrap = data.nft.attach(&data.private_key,&data.target, &mut ledger_authority);
 
     match nft_wrap {
-    Ok(_) => Ok(Json(data.nft)),
+    Ok(nft) => Ok(Json(nft)),
     Err(_) => Err(Status::InternalServerError),
     }
 
@@ -103,7 +103,7 @@ fn detach(data: Json<DetachParams>) -> Result<Json<NFTCredential<PoseidonHasher,
          &data.target,data.path_nft_credential.iter().collect(), &mut ledger_authority);
 
     match nft_wrap {
-    Ok(_) => Ok(Json(data.nft)),
+    Ok(nft) => Ok(Json(nft)),
     Err(_) => Err(Status::InternalServerError),
     }
 
